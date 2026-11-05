@@ -1,1 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Player</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+            font-family: sans-serif;
+        }
+        .audio-btn {
+            background-color: #0066ff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .audio-btn:hover {
+            background-color: #0052cc;
+        }
+    </style>
+</head>
+<body>
 
+    <audio id="myAudio" preload="none">
+        <source src="https://raw.githubusercontent.com/vacacoalva-create/audio-hosting/main/%E0%B9%85%E0%B9%89%E0%B9%84%E0%B8%99%E0%B8%81%E0%B8%A5%E0%B9%8B%E0%B8%AD%E0%B8%87.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <button class="audio-btn" onclick="toggleAudio()">
+        <span id="btnIcon">▶</span> <span id="btnText">Play Audio</span>
+    </button>
+
+    <script>
+        function toggleAudio() {
+            const audio = document.getElementById("myAudio");
+            const icon = document.getElementById("btnIcon");
+            const text = document.getElementById("btnText");
+
+            if (audio.paused) {
+                audio.play();
+                icon.textContent = "❚❚";
+                text.textContent = "Pause Audio";
+            } else {
+                audio.pause();
+                icon.textContent = "▶";
+                text.textContent = "Play Audio";
+            }
+        }
+
+        document.getElementById("myAudio").addEventListener("ended", function() {
+            document.getElementById("btnIcon").textContent = "▶";
+            document.getElementById("btnText").textContent = "Play Audio";
+        });
+    </script>
+
+</body>
+</html>
